@@ -1,5 +1,5 @@
 
-[ClassVersion("1.0.0"),FriendlyName("xMySqlGrant")] 
+[ClassVersion("1.0.0"),FriendlyName("msMySqlGrant")] 
 class MSFT_msMySqlGrant : OMI_BaseResource
 { 
   [Key, Description("Name of MySQL user.")] String UserName;

@@ -1,5 +1,5 @@
 
-[ClassVersion("1.0.0"),FriendlyName("xMySqlUser")] 
+[ClassVersion("1.0.0"),FriendlyName("msMySqlUser")] 
 class MSFT_msMySqlUser : OMI_BaseResource
 { 
   [Key, Description("Name of MySQL user to create or remove.")] String Name;

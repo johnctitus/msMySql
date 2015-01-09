@@ -1,5 +1,5 @@
 
-[ClassVersion("1.0.0"),FriendlyName("xMySqlServer")] 
+[ClassVersion("1.0.0"),FriendlyName("msMySqlServer")] 
 class MSFT_msMySqlServer : OMI_BaseResource
 {
   [Key, Description("Provides the service name to use during setup of MySQL")]

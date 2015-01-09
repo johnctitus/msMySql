@@ -259,7 +259,7 @@ function Set-TargetResource
     # time we try to install with the config, we have to provide the existingpasswd parameter, or installation/removal
     # will fail. This is an issue with the usage of removedatadir parameter, and this is the work-around
 
-    $InstanceFlagpath = "$($env:ProgramFiles)\WindowsPowerShell\Modules\xMySQL\MySQLInstanceFlag.txt"
+    $InstanceFlagpath = "$($env:ProgramFiles)\WindowsPowerShell\Modules\msMySQL\MySQLInstanceFlag.txt"
     Trace-Message "SQL instance flag path is $InstanceFlagpath"
 
     if (!(Test-Path -Path $InstanceFlagpath))
