@@ -1,5 +1,5 @@
 #########################################################################################################################################
-# xMySqlGrant resource for granting user permission(s) to mySql database
+# msMySqlGrant resource for granting user permission(s) to mySql database
 #########################################################################################################################################
 
 
@@ -20,7 +20,7 @@ GrantDoesNotExist=A user with the name {0} does not exist.
 '@
 }
 
-Import-LocalizedData LocalizedData -FileName MSFT_xMySqlGrant.strings.psd1
+Import-LocalizedData LocalizedData -FileName MSFT_msMySqlGrant.strings.psd1
 
 #########################################################################################################################################
 # Set-MySqlPwdEnvironmentVariable ([pscredential] $RootPassword). Given the input root password, set the MySQL password environment variable

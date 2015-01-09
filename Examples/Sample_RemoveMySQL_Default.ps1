@@ -1,4 +1,4 @@
-﻿
+
 configuration SQLInstanceRemovalConfiguration
 {
     
@@ -7,7 +7,7 @@ configuration SQLInstanceRemovalConfiguration
     node $AllNodes.NodeName
     {
         
-        xMySqlServer MySQLInstance
+        msMySqlServer MySQLInstance
         {
             Ensure = "Absent"
             RootPassword = $global:cred

@@ -1,4 +1,4 @@
-﻿###################
+###################
 # Configuration script to create my sql user. It assumes that mySql is installed on local machine with root user $RootUser and root password $global:pwd
 ###################
 
@@ -15,7 +15,7 @@ configuration CreateMySQLUserConfiguration
     $mySQLUserCredential = New-Object -TypeName System.Management.Automation.PSCredential ($Name,$global:pwd)
     node ("localhost")
     {                  
-        xMySqlUser NewMySqlUser1
+        msMySqlUser NewMySqlUser1
         {
             Name = $Name
             Credential = $mySQLUserCredential
