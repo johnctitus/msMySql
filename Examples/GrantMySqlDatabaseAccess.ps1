@@ -1,4 +1,4 @@
-﻿###################
+###################
 # Configuration script to grant full access to given my sql database for given my sql user. 
 # It assumes that mySql is installed on local machine with root user $RootUser and root password $global:pwd
 ###################
@@ -20,7 +20,7 @@ configuration MySQLGrantConfiguration
     
     node ("localhost")
     {                  
-        xMySqlGrant mySQLGrant
+        msMySqlGrant mySQLGrant
         {
             UserName = $UserName
             DatabaseName = $DatabaseName

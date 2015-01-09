@@ -1,4 +1,4 @@
-﻿
+
 configuration SQLInstanceInstallationConfiguration
 {
     param
@@ -18,7 +18,7 @@ configuration SQLInstanceInstallationConfiguration
     {
         
         
-        xPackage mySqlInstaller
+        msPackage mySqlInstaller
         {
                     
             Path = $MySQLInstancePackagePath
@@ -26,7 +26,7 @@ configuration SQLInstanceInstallationConfiguration
             Name = $MySQLInstancePackageName
         }
         
-        xMySqlServer MySQLInstance
+        msMySqlServer MySQLInstance
         {
             Ensure = "Present"
             RootPassword = $global:cred

@@ -1,5 +1,5 @@
 #########################################################################################################################################
-# xMySqlUSer module for creating/removing users from MySql Server
+# msMySqlUser module for creating/removing users from MySql Server
 #########################################################################################################################################
 
 
@@ -19,7 +19,7 @@ UserDoesNotExist=A user with the name {0} does not exist.
 '@
 }
 
-Import-LocalizedData LocalizedData -FileName MSFT_xMySqlUser.strings.psd1
+Import-LocalizedData LocalizedData -FileName MSFT_msMySqlUser.strings.psd1
 
 #########################################################################################################################################
 # Set-MySqlPwdEnvVar ([pscredential] $RootPassword). Given the input root password, set the MySQL password environment variable

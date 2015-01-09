@@ -1,4 +1,4 @@
-﻿configuration SQLRemoveInstanceAndDatabaseInstallationConfiguration
+configuration SQLRemoveInstanceAndDatabaseInstallationConfiguration
 {
     param
     (
@@ -15,14 +15,14 @@
 
     node $AllNodes.NodeName
     {
-        xMySqlDatabase MySQLDatabase
+        msMySqlDatabase MySQLDatabase
         {
             Ensure = "Absent"
             Name = "TestDB"
             ConnectionCredential = $global:cred
         }
         
-        xMySqlServer MySQLInstance
+        msMySqlServer MySQLInstance
         {
             Ensure = "Absent"
             ServiceName = "MySQLInstanceServiceName"
@@ -30,7 +30,7 @@
             DependsOn = "[xMySqlDatabase]MySQLDatabase"
         }
 
-        xPackage mySqlInstaller
+        msPackage mySqlInstaller
         {
                     
             Path = $MySQLInstancePackagePath

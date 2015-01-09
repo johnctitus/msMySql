@@ -1,4 +1,4 @@
-﻿configuration SQLInstanceAndDatabaseInstallationConfiguration
+configuration SQLInstanceAndDatabaseInstallationConfiguration
 {
     param
     (
@@ -16,7 +16,7 @@
     node $AllNodes.NodeName
     {
         
-        xPackage mySqlInstaller
+        msPackage mySqlInstaller
         {
                     
             Path = $MySQLInstancePackagePath
@@ -25,7 +25,7 @@
             Ensure = "Present"
         }
         
-        xMySqlServer MySQLInstance
+        msMySqlServer MySQLInstance
         {
             Ensure = "Present"
             RootPassword= $global:cred
@@ -33,7 +33,7 @@
             DependsOn = "[xPackage]mySqlInstaller"
         }
 
-        xMySqlDatabase MySQLDatabase
+        msMySqlDatabase MySQLDatabase
         {
             Ensure = "Present"
             Name = "TestDB"
