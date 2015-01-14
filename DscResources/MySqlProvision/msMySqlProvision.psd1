@@ -1,5 +1,5 @@
 #
-# Module manifest for module 'xMySqlProvision'
+# Module manifest for module 'msMySqlProvision'
 #
 #
 # Generated on: 6/23/2014

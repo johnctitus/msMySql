@@ -1,5 +1,5 @@
-# a Powershell script to create MySqlDatabase resource using xDSCResourceDesigner tool
-$friendlyName = "xMySqlDatabase"
+# a Powershell script to create MySqlDatabase resource using msDSCResourceDesigner tool
+$friendlyName = "msMySqlDatabase"
 $resourceName = "MSFT_$friendlyName"
 $classVersion = "1.0.0"
 

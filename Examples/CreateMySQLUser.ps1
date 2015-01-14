@@ -11,7 +11,7 @@ configuration CreateMySQLUserConfiguration
         [String] $Name
     )
     
-    Import-DscResource -Module xMySql
+    Import-DscResource -Module msMySql
     $mySQLUserCredential = New-Object -TypeName System.Management.Automation.PSCredential ($Name,$global:pwd)
     node ("localhost")
     {                  

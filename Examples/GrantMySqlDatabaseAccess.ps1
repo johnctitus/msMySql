@@ -16,7 +16,7 @@ configuration MySQLGrantConfiguration
         [String] $DatabaseName
     )
     
-    Import-DscResource -Module xMySql
+    Import-DscResource -Module msMySql
     
     node ("localhost")
     {                  
