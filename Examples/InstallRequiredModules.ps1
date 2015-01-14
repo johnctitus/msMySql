@@ -3,4 +3,4 @@
 # This requires WMF 5.  If you don't have WMF 5, Please install the modules manually.
 
 Write-Host "Installing required modules..."
-Install-Module xMySql -MinimumVersion 1.0.1 -Force
+Install-Module msMySql -MinimumVersion 1.0.1 -Force

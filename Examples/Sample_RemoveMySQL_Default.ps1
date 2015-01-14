@@ -2,7 +2,7 @@
 configuration SQLInstanceRemovalConfiguration
 {
     
-    Import-DscResource -Module xMySql
+    Import-DscResource -Module msMySql
     
     node $AllNodes.NodeName
     {

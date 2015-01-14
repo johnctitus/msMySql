@@ -12,7 +12,7 @@ configuration SQLInstanceInstallationConfiguration
         [String] $MySQLInstancePackageName
     )
     
-    Import-DscResource -Module xMySql
+    Import-DscResource -Module msMySql
 
     node $AllNodes.NodeName
     {
@@ -31,7 +31,7 @@ configuration SQLInstanceInstallationConfiguration
             Ensure = "Present"
             RootPassword = $global:cred
             ServiceName = "MySQLServerInstanceName"
-            DependsOn = "[xPackage]mySqlInstaller"
+            DependsOn = "[msPackage]mySqlInstaller"
         }
     }
 }

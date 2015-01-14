@@ -11,7 +11,7 @@ configuration SQLRemoveInstanceAndDatabaseInstallationConfiguration
         [String] $MySQLInstancePackageName
     )
     
-    Import-DscResource -Module xMySql
+    Import-DscResource -Module msMySql
 
     node $AllNodes.NodeName
     {
@@ -27,7 +27,7 @@ configuration SQLRemoveInstanceAndDatabaseInstallationConfiguration
             Ensure = "Absent"
             ServiceName = "MySQLInstanceServiceName"
             RootPassword = $global:cred
-            DependsOn = "[xMySqlDatabase]MySQLDatabase"
+            DependsOn = "[msMySqlDatabase]MySQLDatabase"
         }
 
         msPackage mySqlInstaller
@@ -37,7 +37,7 @@ configuration SQLRemoveInstanceAndDatabaseInstallationConfiguration
             ProductId = $Node.PackageProductID 
             Name = $MySQLInstancePackageName
             Ensure = "Absent"
-            DependsOn = "[xMySqlInstance]MySQLInstance"
+            DependsOn = "[msMySqlInstance]MySQLInstance"
         }
     }
 }
