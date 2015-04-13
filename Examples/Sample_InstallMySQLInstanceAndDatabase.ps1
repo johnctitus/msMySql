@@ -16,7 +16,7 @@ configuration SQLInstanceAndDatabaseInstallationConfiguration
     node $AllNodes.NodeName
     {
         
-        msPackage mySqlInstaller
+        Package mySqlInstaller
         {
                     
             Path = $MySQLInstancePackagePath

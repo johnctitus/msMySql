@@ -30,7 +30,7 @@ configuration SQLRemoveInstanceAndDatabaseInstallationConfiguration
             DependsOn = "[msMySqlDatabase]MySQLDatabase"
         }
 
-        msPackage mySqlInstaller
+        Package mySqlInstaller
         {
                     
             Path = $MySQLInstancePackagePath

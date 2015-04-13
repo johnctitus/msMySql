@@ -18,7 +18,7 @@ configuration SQLInstanceInstallationConfiguration
     {
         
         
-        msPackage mySqlInstaller
+        Package mySqlInstaller
         {
                     
             Path = $MySQLInstancePackagePath
