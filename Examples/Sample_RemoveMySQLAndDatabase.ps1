@@ -37,7 +37,7 @@ configuration SQLRemoveInstanceAndDatabaseInstallationConfiguration
             ProductId = $Node.PackageProductID 
             Name = $MySQLInstancePackageName
             Ensure = "Absent"
-            DependsOn = "[msMySqlInstance]MySQLInstance"
+            DependsOn = "[msMySqlServer]MySQLInstance"
         }
     }
 }
