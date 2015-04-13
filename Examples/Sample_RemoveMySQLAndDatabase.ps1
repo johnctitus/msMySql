@@ -50,10 +50,12 @@ $global:pwd = ConvertTo-SecureString "pass@word1" -AsPlainText -Force
 $global:usrName = "administrator"
 $global:cred = New-Object -TypeName System.Management.Automation.PSCredential ($global:usrName,$global:pwd)
 
+$path = split-path $SCRIPT:MyInvocation.MyCommand.Path -parent
 
 SQLRemoveInstanceAndDatabaseInstallationConfiguration `
     -MySQLInstancePackagePath "http://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.6.17.0.msi" `
-    -MySQLInstancePackageName "MySQL Installer" -ConfigurationData .\nodedata.psd1
+    -MySQLInstancePackageName "MySQL Installer" -ConfigurationData "$path\nodedata.psd1" -outpath c:\windows\temp
+Start-DscConfiguration -Path c:\windows\temp -ComputerName localhost -Wait -Verbose -Force
 
 
 

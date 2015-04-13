@@ -30,7 +30,7 @@ configuration SQLInstanceAndDatabaseInstallationConfiguration
             Ensure = "Present"
             RootPassword= $global:cred
             ServiceName = "MySQLInstanceServiceName"
-            DependsOn = "[msPackage]mySqlInstaller"
+            DependsOn = "[Package]mySqlInstaller"
         }
 
         msMySqlDatabase MySQLDatabase
@@ -52,9 +52,11 @@ $global:usrName = "administrator"
 $global:cred = New-Object -TypeName System.Management.Automation.PSCredential ($global:usrName,$global:pwd)
 
 
+$path = split-path $SCRIPT:MyInvocation.MyCommand.Path -parent
 SQLInstanceAndDatabaseInstallationConfiguration `
     -MySQLInstancePackagePath "http://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.6.17.0.msi" `
-    -MySQLInstancePackageName "MySQL Installer" -ConfigurationData .\nodedata.psd1
+    -MySQLInstancePackageName "MySQL Installer" -ConfigurationData "$path\nodedata.psd1" -outpath c:\windows\temp
+Start-DscConfiguration -Path c:\windows\temp -ComputerName localhost -Wait -Verbose -Force
 
 
 
