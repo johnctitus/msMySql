@@ -48,13 +48,13 @@ function Get-MySqlInstallerFolder
 function Get-MySqlInstaller
 {
     if($env:PROCESSOR_ARCHITECTURE -eq "AMD64"){
-        $base = "${env:ProgramFiles(x86)})\MySQL\"
+        $base = "${env:ProgramFiles(x86)}\MySQL\"
     } else{
         $base = "${env:ProgramFiles})\MySQL\"
     }
     $result = Get-ChildItem -name "MySQLInstallerConsole.exe" -Path "$base" -Recurse -ErrorAction SilentlyContinue
     if ($result) { 
-        return Join-path $base -childpath (result)
+        return Join-path $base -childpath ($result)
     } else {
         return Join-path $base -childpath "MySQL Installer\MySQLInstallerConsole.exe"
     }
@@ -302,7 +302,9 @@ function Set-TargetResource
         if(-not $status.MySqlInstalled)
         {
             Trace-Message "Installing MySQL"
+
             &$mySqlInstallerConsole --nowait --action=Install "--catalog=$(Get-MySqlCatalogName)" "--product=$(Get-MySqlProductName)" $config
+            Trace-Message "&$mySqlInstallerConsole --nowait --action=Install ""--catalog=$(Get-MySqlCatalogName)"" ""--product=$(Get-MySqlProductName)"" $config"
 
             # don't stamp the machine until after the installation has completed, successfully!
             Trace-Message "Creating instance flag"

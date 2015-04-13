@@ -38,7 +38,7 @@ configuration SQLInstanceAndDatabaseInstallationConfiguration
             Ensure = "Present"
             Name = "TestDB"
             ConnectionCredential = $global:cred
-            DependsOn = "[msMySqlInstance]MySQLInstance"
+            DependsOn = "[msMySqlServer]MySQLInstance"
         }
     }
 }
