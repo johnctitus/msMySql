@@ -33,11 +33,15 @@ function Get-MySqlInstallerFolder
 {
     if($env:PROCESSOR_ARCHITECTURE -eq "AMD64")
     {
-        return "$(${env:ProgramFiles(x86)})\MySQL\MySQL Installer"
+        $p = (Get-Item -Path "$(${env:ProgramFiles(x86)})\MySQL\MySQL Installer*").fullname
+        if ($p) { return $p }
+        else { return "$(${env:ProgramFiles(x86)})\MySQL\MySQL Installer" }
     }
     else
     {
-        return "$(${env:ProgramFiles})\MySQL\MySQL Installer"
+        $p = (Get-Item -Path "$(${env:ProgramFiles})\MySQL\MySQL Installer*").fullname
+        if ($p) { return $p }
+        else { return "$(${env:ProgramFiles})\MySQL\MySQL Installer" }
     }
 }
 
