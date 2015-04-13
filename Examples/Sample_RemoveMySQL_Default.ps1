@@ -26,7 +26,7 @@ $global:cred = New-Object -TypeName System.Management.Automation.PSCredential ($
 
 $path = split-path $SCRIPT:MyInvocation.MyCommand.Path -parent
 
-SQLInstanceRemovalConfiguration -ConfigurationData "$path\nodedata.psd1" -outpath c:\windows\temp
+SQLInstanceRemovalConfiguration -ConfigurationData "$path\nodedata.psd1" -outputpath c:\windows\temp
 Start-DscConfiguration -Path c:\windows\temp -ComputerName localhost -Wait -Verbose -Force
 
 

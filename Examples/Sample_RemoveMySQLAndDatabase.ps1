@@ -54,7 +54,7 @@ $path = split-path $SCRIPT:MyInvocation.MyCommand.Path -parent
 
 SQLRemoveInstanceAndDatabaseInstallationConfiguration `
     -MySQLInstancePackagePath "http://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.6.17.0.msi" `
-    -MySQLInstancePackageName "MySQL Installer" -ConfigurationData "$path\nodedata.psd1" -outpath c:\windows\temp
+    -MySQLInstancePackageName "MySQL Installer" -ConfigurationData "$path\nodedata.psd1" -outputpath c:\windows\temp
 Start-DscConfiguration -Path c:\windows\temp -ComputerName localhost -Wait -Verbose -Force
 
 
