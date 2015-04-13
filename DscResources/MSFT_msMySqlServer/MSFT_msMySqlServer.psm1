@@ -45,6 +45,22 @@ function Get-MySqlInstallerFolder
     }
 }
 
+function Get-MySqlInstaller
+{
+    if($env:PROCESSOR_ARCHITECTURE -eq "AMD64"){
+        $base = "${env:ProgramFiles(x86)})\MySQL\"
+    } else{
+        $base = "${env:ProgramFiles})\MySQL\"
+    }
+    $result = Get-ChildItem -name "MySQLInstallerConsole.exe" -Path "$base" -Recurse -ErrorAction SilentlyContinue
+    if ($result) { 
+        return Join-path $base -childpath (result)
+    } else {
+        return Join-path $base -childpath "MySQL Installer\MySQLInstallerConsole.exe"
+    }
+
+}
+
 $mySqlInstallerConsole = Join-path (Get-MySqlInstallerFolder) -ChildPath "MySQLInstallerConsole.exe"
 
 ################################################################################################################################
@@ -55,9 +71,9 @@ function Get-MySqlInstalledComponents
 {
     # we don't want to throw an exception here for the case where Ensure=Absent during Test/Get-DscConfiguration. Instead of failing
     # with an exception it should return false. Removing exception handling and throwing.
-    if ((Test-Path -Path $mySqlInstallerConsole))
+    if (Test-Path -Path (Get-MySqlInstaller))
     {
-        $statusResults = &$mySqlInstallerConsole --nowait --type=server --action=Status
+        $statusResults = &(Get-MySqlInstaller) --nowait --type=server --action=Status
 
         $statusResults | % {
         
@@ -279,14 +295,14 @@ function Set-TargetResource
         $config = "--config=$(Get-MySqlProductName):passwd=$($RootPassword.GetNetworkCredential().Password);servicename=$ServiceName;existingpasswd=$($RootPassword.GetNetworkCredential().Password);autostartservice=true;servertype=server"
     }
     
-    Trace-Message "mySqlInstallerConsole is $mySqlInstallerConsole"
+    Trace-Message "mySqlInstallerConsole is (Get-MySqlInstaller)"
 
     if($Ensure -eq "Present")
     {
         if(-not $status.MySqlInstalled)
         {
             Trace-Message "Installing MySQL"
-            &$mySqlInstallerConsole --nowait --action=Install "--catalog=$(Get-MySqlCatalogName)" "--product=$(Get-MySqlProductName)" $config
+            &(Get-MySqlInstaller) --nowait --action=Install "--catalog=$(Get-MySqlCatalogName)" "--product=$(Get-MySqlProductName)" $config
 
             # don't stamp the machine until after the installation has completed, successfully!
             Trace-Message "Creating instance flag"
@@ -297,7 +313,7 @@ function Set-TargetResource
     else
     {
         Trace-Message "Removing MySQL"
-        &$mySqlInstallerConsole --nowait --type=server --action=Remove $config
+        &(Get-MySqlInstaller) --nowait --type=server --action=Remove $config
     }
 
 }
